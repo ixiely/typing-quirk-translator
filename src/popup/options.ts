@@ -1,4 +1,4 @@
-import {Name, UserSettings, DEFAULT_SETTINGS} from '../types';
+import {Character, UserSettings, DEFAULT_SETTINGS} from '../types';
 
 const port = chrome.runtime.connect({name: 'popup'});
 let deadNameCounter = 0;
