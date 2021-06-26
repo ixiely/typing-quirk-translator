@@ -20,8 +20,8 @@
     "page": "popup/options.html"
   },
   "browser_action": {
-    "default_icon": "icons/icon19.png",
-     "default_title": "Deadname Remover Options",
+    "default_icon": "icons/icon48.png",
+     "default_title": "TeaQuirk Options",
      "default_popup": "popup/popup.html"
   },
   "permissions": [
