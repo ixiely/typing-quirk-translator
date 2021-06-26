@@ -1,10 +1,10 @@
-import {UserSettings, DEFAULT_SETTINGS, Name} from '../types';
+import {UserSettings, DEFAULT_SETTINGS, Character} from '../types';
 import {domAction} from './dom';
 
 const cachedWords = new Map<string, string>();
 let observer: MutationObserver = null;
-let aliveName: Name = null;
-let deadName: Name[] = null;
+let Character: Character = null;
+let chKeys: Character[] = null;
 let newWords: string[] = [];
 let oldWords: string[] = [];
 let revert = false;
@@ -16,8 +16,8 @@ export function start(settings: UserSettings = DEFAULT_SETTINGS) {
         return;
     }
     highlight = settings.highlight;
-    aliveName = settings.name;
-    deadName = settings.deadname;
+    Character = settings.Character;
+    chKeys = settings.chKeys;
     initalizeWords();
     replaceDOMWithNewWords();
 }
@@ -39,32 +39,32 @@ function cleanUp() {
 function initalizeWords() {
     newWords = [];
     oldWords = [];
-    const isAliveNameFirst = !!aliveName.first;
-    const isAliveNameMiddle = !!aliveName.middle;
-    const isAliveNameLast = !!aliveName.last;
-    for (let x = 0, len = deadName.length; x < len; x++) {
-        const isDeadNameFirst = !!deadName[x].first;
-        const isDeadNameMiddle = !!deadName[x].middle;
-        const isDeadNameLast = !!deadName[x].last;
+    const isCharacterCharacter1 = !!Character.Character1;
+    const isCharacterCharacter2 = !!Character.Character2;
+    const isCharacterCharacter3 = !!Character.Character3;
+    for (let x = 0, len = chKeys.length; x < len; x++) {
+        const isCharacterKeyCharacter1 = !!chKeys[x].Character1;
+        const isCharacterKeyCharacter2 = !!chKeys[x].Character2;
+        const isCharacterKeyCharacter3 = !!chKeys[x].Character3;
         if (
-            isAliveNameFirst && isDeadNameFirst &&
-            isAliveNameMiddle && isDeadNameMiddle &&
-            isAliveNameLast && isDeadNameLast
+            isCharacterCharacter1 && isCharacterKeyCharacter1 &&
+            isCharacterCharacter2 && isCharacterKeyCharacter2 &&
+            isCharacterCharacter3 && isCharacterKeyCharacter3
         ) {
-            const fullAlive = `${aliveName.first} ${aliveName.middle} ${aliveName.last}`;
-            const fullDead = `${deadName[x].first} ${deadName[x].middle} ${deadName[x].last}`;
-            newWords.push(fullAlive);
-            oldWords.push(fullDead);
+            const fullCharacter = `${Character.Character1} ${Character.Character2} ${Character.Character3}`;
+            const fullchKey = `${chKeys[x].Character1} ${chKeys[x].Character2} ${chKeys[x].Character3}`;
+            newWords.push(fullCharacter);
+            oldWords.push(fullchKey);
         }
 
-        if (isAliveNameFirst && isDeadNameFirst) {
-            newWords.push(aliveName.first);
-            oldWords.push(deadName[x].first);
+        if (isCharacterCharacter1 && isCharacterKeyCharacter1) {
+            newWords.push(Character.Character1);
+            oldWords.push(chKeys[x].Character1);
         }
 
-        if (isDeadNameMiddle) {
-            newWords.push(isAliveNameMiddle ? aliveName.middle : '');
-            oldWords.push(deadName[x].middle);
+        if (isCharacterCharacter2 && isCharacterKeyCharacter2) {
+            newWords.push(isCharacterCharacter2 ? isCharacterCharacter2.Character2 : '');
+            oldWords.push(chKeys[x].Character2);
         }
 
         if (isAliveNameLast && isDeadNameLast) {

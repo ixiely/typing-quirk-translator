@@ -2,30 +2,30 @@
   * @author: WillHayCode
   */
 
-export type Name = {
-    first: string;
-    middle: string;
-    last: string;
+export type Character = {
+    Character1: string;
+    Character2: string;
+    Character3: string;
 }
 
 export type UserSettings = {
-    name: Name;
-    deadname: Name[];
+    Character: Character;
+    chKeys: Character[];
     enabled: boolean;
     stealthMode: boolean;
     highlight: boolean;
 }
 
 export const DEFAULT_SETTINGS: UserSettings = {
-    name: {
-        first: '',
-        middle: '',
-        last: ''
+    Character: {
+        Character1: '',
+        Character2: '',
+        Character3: ''
     },
-    deadname: [{
-        first: '',
-        middle: '',
-        last: ''
+    chKeys: [{
+        Character1: '',
+        Character2: '',
+        Character3: ''
     }],
     enabled: true,
     stealthMode: false,
